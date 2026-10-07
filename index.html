@@ -9,30 +9,35 @@
 </head>
 <body>
   <main class="envelope" id="card">
-    <div class="stamp" aria-hidden="true">☁️</div>
+    <div class="stamp" aria-hidden="true">📫</div>
     <h1>Write to future you</h1>
-    <p class="sub">Say hi, then pick a day to open it.</p>
+    <p class="sub">Say hi, then pick the day and time to open it.</p>
+
+    <div class="field">
+      <label for="name">Your name</label>
+      <input id="name" type="text" autocomplete="given-name" placeholder="Zandile">
+    </div>
 
     <div class="row">
       <div class="field">
-        <label for="name">Your name</label>
-        <input id="name" type="text" autocomplete="given-name" placeholder="Zandile">
+        <label for="date">Arrive on</label>
+        <input id="date" type="date">
       </div>
       <div class="field">
-        <label for="date">Open on</label>
-        <input id="date" type="date">
+        <label for="time">At what time</label>
+        <input id="time" type="time" value="09:00">
       </div>
     </div>
 
     <div class="field">
-      <label for="email">Sent it to (your email)</label>
+      <label for="email">Send it to your email</label>
       <input id="email" type="email" autocomplete="email" placeholder="you@example.com">
     </div>
-    <input id="website" class="hp" type="text" tabindex="-1" autocomplete="off" aria-hidden="true" placeholder="you@example.com">
+    <input id="website" class="hp" type="text" tabindex="-1" autocomplete="off" aria-hidden="true">
 
     <div class="field">
       <label for="message">Your letter</label>
-      <textarea id="message" maxlength="3000" placeholder="Dear future me..."></textarea>
+      <textarea id="message" maxlength="3000" placeholder="Dear future me…"></textarea>
       <div class="count"><span id="chars">0</span> / 3000</div>
     </div>
 
