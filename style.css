@@ -1,0 +1,91 @@
+  :root {
+    --sky: #cfe3f5;
+    --butter: #ffe8a3;
+    --mint: #bfe6d0;
+    --paper: #fffdf8;
+    --ink: #2f3a56;
+    --soft: #6b7794;
+    --line: #d9e1ef;
+    --radius: 22px;
+  }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; min-height: 100%; }
+  body {
+    font-family: "Nunito", system-ui, sans-serif;
+    color: var(--ink);
+    background:
+      radial-gradient(circle at 12% 18%, var(--butter) 0 70px, transparent 71px),
+      radial-gradient(circle at 90% 82%, var(--mint) 0 110px, transparent 111px),
+      var(--sky);
+    display: grid; place-items: center;
+    padding: 32px 16px;
+  }
+  h1, label, button, .stamp { font-family: "Fredoka", "Nunito", sans-serif; }
+
+  .envelope {
+    width: min(520px, 100%);
+    background: var(--paper);
+    border-radius: var(--radius);
+    border: 3px solid var(--ink);
+    box-shadow: 8px 8px 0 var(--ink);
+    padding: 28px 26px 26px;
+    position: relative;
+  }
+  /* air-mail stripe along the top */
+  .envelope::before {
+    content: ""; position: absolute; inset: 0 0 auto 0; height: 12px;
+    border-radius: 19px 19px 0 0;
+    background: repeating-linear-gradient(135deg, #8fb8e8 0 14px, var(--paper) 14px 24px, #f4a9a0 24px 38px, var(--paper) 38px 48px);
+  }
+  .stamp {
+    position: absolute; top: 30px; right: 24px;
+    width: 64px; height: 76px; background: var(--butter);
+    border: 2px dashed var(--ink); border-radius: 6px;
+    display: grid; place-items: center; font-size: 34px;
+    transform: rotate(5deg);
+  }
+  h1 { font-size: 2rem; margin: 22px 90px 4px 0; line-height: 1.1; font-weight: 600; }
+  .sub { margin: 0 90px 22px 0; color: var(--soft); }
+
+  .field { margin-bottom: 16px; }
+  .row { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+  label { display: block; font-weight: 500; margin-bottom: 6px; }
+  input, textarea {
+    width: 100%; font: inherit; color: var(--ink);
+    background: #fff; border: 2px solid var(--line); border-radius: 14px;
+    padding: 11px 14px; transition: border-color .15s, box-shadow .15s;
+  }
+  textarea { resize: vertical; min-height: 150px; line-height: 1.5;
+    background-image: repeating-linear-gradient(transparent 0 26px, #eef2fa 26px 27px);
+    background-attachment: local; }
+  input:focus, textarea:focus {
+    outline: none; border-color: var(--ink); box-shadow: 0 0 0 4px var(--mint);
+  }
+  .count { text-align: right; font-size: .8rem; color: var(--soft); margin-top: 4px; }
+
+  .actions { display: flex; gap: 12px; flex-wrap: wrap; margin-top: 6px; }
+  button {
+    font-size: 1.05rem; font-weight: 500; cursor: pointer; color: var(--ink);
+    border: 2.5px solid var(--ink); border-radius: 999px; padding: 11px 22px;
+    box-shadow: 3px 3px 0 var(--ink); transition: transform .1s, box-shadow .1s;
+  }
+  button:hover { transform: translate(-1px, -1px); box-shadow: 4px 4px 0 var(--ink); }
+  button:active { transform: translate(3px, 3px); box-shadow: 0 0 0 var(--ink); }
+  button:focus-visible { outline: 3px solid #5b8def; outline-offset: 3px; }
+  button:disabled { opacity: .6; cursor: wait; }
+  .primary { background: var(--butter); }
+  .secondary { background: var(--mint); }
+
+  .status {
+    margin-top: 18px; padding: 12px 16px; border-radius: 14px;
+    background: #eef6ff; border: 2px solid var(--line); display: none;
+  }
+  .status.show { display: block; }
+  .status.ok { background: #e6f7ee; border-color: var(--mint); }
+  .status.err { background: #fff0ee; border-color: #f4b4ab; }
+
+  /* the one moment of motion: the letter gets sealed */
+  .envelope.sealed { animation: pop .5s ease; }
+  @keyframes pop { 40% { transform: scale(.97) rotate(-.6deg); } 70% { transform: scale(1.02); } }
+  @media (prefers-reduced-motion: reduce) { .envelope.sealed { animation: none; } button { transition: none; } }
+  @media (max-width: 460px) { .row { grid-template-columns: 1fr; } h1, .sub { margin-right: 72px; } }
