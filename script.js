@@ -1,4 +1,4 @@
-const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbzuEqmH4ACEdPxxXcfxSyUjTYT3VL_VPwLUeV-28hU7TKyvoyI0cWRXwn1w_dx9nXsK/exec";
+const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbzQB5yjujX2yqg7tQYSNvhD1jsSk1jtibAGKpmfAgrN3HTAswjXRbwD-hgB-g2quvKpog/exec";
 const scheduled = !SCRIPT_URL.startsWith("YOUR_");
 
   /* ---------- 1. Optional: send-right-now via EmailJS (emailjs.com), used only if SCRIPT_URL is empty ---------- */
